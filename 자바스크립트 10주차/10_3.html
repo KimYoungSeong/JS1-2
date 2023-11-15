@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        //document html 전체
+        //aa form 태그안에
+        //myName myName의
+        //value 값을 가져와라 라는 뜻 뒤에 .을 붙이면
+        function onChangeUpperCase(){
+            var myID = document.aa.myName.value;
+            document.aa.myName.value = myID.toUpperCase();
+        }
+    </script>
+</head>
+<body>
+<form name = "aa">
+    Enter your name:
+    <input type="text" name = "myName" onchange="onChangeUpperCase()">
+</form>
+</body>
+</html>
