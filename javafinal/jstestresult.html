@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>성적 처리 프로그램</title>
+  <style>
+    body {
+        display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url('finalbackground.png'); /* 이미지 경로를 설정하세요 */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    #inputForm {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    #inputForm label, #inputForm input, #inputForm button {
+      margin: 5px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 50%;
+      border: 1px solid white;
+      color: white;
+    }
+    table, th, td {
+      border: 1px solid white;
+      text-align: center;
+      margin: auto;
+      color: white;
+    }
+    #showResultsButton {
+        margin: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>성적 처리 프로그램</h1>
+
+<div id="inputForm">
+  <label for="name">이름:</label>
+  <input type="text" id="name">
+  <label for="korean">국어:</label>
+  <input type="number" id="korean">
+  <label for="english">영어:</label>
+  <input type="number" id="english">
+  <label for="math">수학:</label>
+  <input type="number" id="math">
+  <button onclick="addStudent()">입력</button>
+  <button id="showResultsButton">결과 보기</button>
+</div>
+
+<script>
+  var students = [];
+
+  function addStudent() {
+    var name = document.getElementById('name').value;
+    var korean = parseFloat(document.getElementById('korean').value);
+    var english = parseFloat(document.getElementById('english').value);
+    var math = parseFloat(document.getElementById('math').value);
+
+    var sum = korean + english + math;
+    var average = sum / 3;
+
+    var grade;
+    if (average >= 90) {
+      grade = 'A';
+    } else if (average >= 80) {
+      grade = 'B';
+    } else if (average >= 70) {
+      grade = 'C';
+    } else if (average >= 60) {
+      grade = 'D';
+    } else {
+      grade = 'F';
+    }
+
+    var studentInfo = {
+      name: name,
+      korean: korean,
+      english: english,
+      math: math,
+      sum: sum,
+      average: average.toFixed(2),
+      grade: grade
+    };
+
+    students.push(studentInfo);
+
+    document.getElementById('name').value = '';
+    document.getElementById('korean').value = '';
+    document.getElementById('english').value = '';
+    document.getElementById('math').value = '';
+  }
+
+  function showResults() {
+    var table = '<table>';
+    table += '<tr><th>이름</th><th>국어</th><th>영어</th><th>수학</th><th>합계</th><th>평균</th><th>학점</th></tr>';
+    for (var j = 0; j < students.length; j++) {
+      table += '<tr>';
+      table += '<td>' + students[j].name + '</td>';
+      table += '<td>' + students[j].korean + '</td>';
+      table += '<td>' + students[j].english + '</td>';
+      table += '<td>' + students[j].math + '</td>';
+      table += '<td>' + students[j].sum + '</td>';
+      table += '<td>' + students[j].average + '</td>';
+      table += '<td>' + students[j].grade + '</td>';
+      table += '</tr>';
+    }
+    table += '</table>';
+
+    var newTab = window.open('', '_blank');
+    newTab.document.write('<html><head><title>결과</title><style>body { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background-image: url("finalbackground.png"); background-size: cover; background-position: center; background-repeat: no-repeat; color: white; } table { border-collapse: collapse; width: 50%; border: 1px solid white; color: white; } table, th, td { border: 1px solid white; text-align: center; margin: auto; }</style></head><body>' + table + '</body></html>');
+    newTab.document.close();
+  }
+
+  document.getElementById('showResultsButton').addEventListener('click', showResults);
+</script>
+
+</body>
+</html>

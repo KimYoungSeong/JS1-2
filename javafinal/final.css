@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    display: grid;
+    place-items: center;
+    height: 50vh;
+    background: url('finalbackground.png') center/cover no-repeat;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: large;
+}
+
+h1 {
+    color: #ffffff;
+}
+
+input {
+    padding: 8px;
+    margin: 5px;
+}
+
+button {
+    padding: 10px;
+    background-color: #ffffff;
+    color: white;
+    cursor: pointer;
+}
+
+table {
+    width: 50%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #ffffff;
+    color: white;
+}
