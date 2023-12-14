@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+        getElementsByTagName() html 문서내의 지정된 태그 반환
+        length 지정된 갯수 반환
+        */
+       function getElements(){
+        var x=document.getElementsByTagName("p");
+        alert(x.length);
+        alert(x[0].innerHTML); //추가
+        alert(x[1].innerHTML); //추가
+        alert(x[2].innerHTML); //추가
+        var y=document.getElementsByTagName("input"); //추가
+        alert(y.length); //추가
+        //alert(y[0].length); //추가
+        alert(y[0].value); //추가
+        alert(y[1].value); //추가
+       }
+    </script>
+</head>
+<body>
+    <p>red1</p>
+    <p>red2</p>
+    <p>red3</p>
+    <input type="text" size="20" /><br />
+    <input type="text" size="20" /><br />
+    <input type="text" size="20" /><br /><br />
+    <input type="button" onclick="getElements()" value="How many input elements?">
+</body>
+</html>
